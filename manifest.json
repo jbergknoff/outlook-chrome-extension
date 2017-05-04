@@ -1,0 +1,13 @@
+{
+  "manifest_version": 2,
+  "name": "Outlook Improvements",
+  "description": "Show unread count in page title, show browser alerts for calendar notifications",
+  "version": "1.0.0",
+  "icons": { "128": "icon.png" },
+  "content_scripts": [
+    {
+      "matches": [ "https://outlook.office.com/owa/*" ],
+      "js": [ "outlook.js" ]
+    }
+  ]
+}
