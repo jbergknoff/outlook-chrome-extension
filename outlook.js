@@ -33,6 +33,20 @@
       last_notification_count = notification_count;
     };
 
+    const make_location_urls_into_links = () => {
+      document.querySelectorAll("span.o365cs-notifications-reminders-location").forEach(insert_link_if_appropriate);
+      document.querySelectorAll(`[aria-label="Location"] span.bidi`).forEach(insert_link_if_appropriate);
+
+      function insert_link_if_appropriate(dom_element) {
+        if (!/^https?:\/\//.test(dom_element.innerHTML)) {
+          return;
+        }
+
+        const url = dom_element.innerHTML;
+        dom_element.innerHTML = `<a href="${url}" target="_blank" style="cursor: pointer">${url}</a>`;
+      }
+    };
+
     const run_stuff = () => {
       const on_mail_page = !!document.querySelector(inbox_count_selector);
       const on_calendar_page = !!document.querySelector("div[aria-label=\"Calendar header\"]");
@@ -42,6 +56,8 @@
       } else if (on_mail_page) {
         set_page_title();
       }
+
+      make_location_urls_into_links();
     };
 
     setInterval(run_stuff, 2000);
