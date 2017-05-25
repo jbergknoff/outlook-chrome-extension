@@ -25,7 +25,7 @@
     const check_notifications = () => {
       // I couldn't find a way to hook into the `CalendarNotification` events
       // that are being passed around.
-      const notification_count = ~~(document.querySelector("span.o365cs-notifications-notificationHeaderText:nth-child(2)") || {}).innerText
+      const notification_count = ~~(document.querySelector("div.o365cs-notifications-notificationPopup span.o365cs-notifications-notificationHeaderText:nth-child(2)") || {}).innerText
       if (notification_count > last_notification_count) {
         alert("Outlook calendar reminder");
       }
