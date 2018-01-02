@@ -6,7 +6,10 @@
   "icons": { "128": "icon.png" },
   "content_scripts": [
     {
-      "matches": [ "https://outlook.office.com/owa/*" ],
+      "matches": [
+        "https://outlook.office.com/owa/*",
+        "https://outlook.office365.com/owa/*"
+      ],
       "js": [ "outlook.js" ]
     }
   ]
